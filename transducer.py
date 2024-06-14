@@ -7,6 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1K7IQ-4urjUiu7KHQFgHDhvBtE0uQQ6mE
 """
 
+
 # Mealy
 class Transducer:
     def __init__(self, states, transitions, initial):
