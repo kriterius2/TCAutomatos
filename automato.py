@@ -40,24 +40,19 @@ class Automato(object):
         inicio = 0
         final = 0
         for i in texto: #percorrendo a cadeia
-            #print('lendo a letra', i)
             match = False
             for j in self.t: #para cada letra da cadeia, verifica se existe uma transição naquele estado
-                #print('comparando a letra: ',i,' no estado:',self.atual,'com a transição: ',j,)
                 if (i == j[1]) & (self.atual == j[0]): #verificando a existencia da transição
-                    #print(self. atual, ' -> ',i,' -> ',j[2])
-                    if (self.atual == 'q0') & (j[2] == 'q1'):
-                        #print('entrou aqui')
+                    #print('pegando a transição de ', self.atual, 'para', j[2])
+                    if (j[2] == 'q1'):
                         inicio = inicioCount + 1
                     elif (self.atual == 'q11') & (j[2] == 'q12'):
                         final = finalCount - 1
-                        print('casamento nas posições', inicio,' ', final)
+                        print('casamento nas posições', inicio,'a', final)
                     self.atual = j[2]
-                    #print('atual agora ', self.atual)
                     match = True
                     break
             if not match:
-                #print('nao foi')
                 self.atual = 'q0'
 
             inicioCount += 1
