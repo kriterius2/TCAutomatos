@@ -3,6 +3,7 @@ class Automato(object):
         self.e = estados
         self.t = transicoes
         self.alfabeto = []
+        self.inicial = inicial
         self.atual = inicial
         self.finais = finais
 
@@ -13,6 +14,7 @@ class Automato(object):
 
 
     def processaString(self,string):
+        self.atual = self.inicial
         match = False
         print("processando a cadeia: ", string)
         for i in string: #percorrendo a cadeia
@@ -30,10 +32,13 @@ class Automato(object):
         if self.atual in self.finais: #apos percorrer a cadeia, caso o automato esteja em um estado final, a palavra é recusada
             print('PALAVRA ACEITA')
         else:
-            print('PALAVRA RECUSADA')    
+            print('PALAVRA RECUSADA')  
+    
 
-    def questao2(self, texto):
+    def ocorrencias(self, texto):
+        print('===========================================================================================')
         print (texto)
+        print('===========================================================================================')
         match = False
         inicioCount = 0
         finalCount = 0
@@ -43,12 +48,12 @@ class Automato(object):
             match = False
             for j in self.t: #para cada letra da cadeia, verifica se existe uma transição naquele estado
                 if (i == j[1]) & (self.atual == j[0]): #verificando a existencia da transição
-                    #print('pegando a transição de ', self.atual, 'para', j[2])
                     if (j[2] == 'q1'):
                         inicio = inicioCount + 1
                     elif (self.atual == 'q11') & (j[2] == 'q12'):
                         final = finalCount - 1
                         print('casamento nas posições', inicio,'a', final)
+                        inicio = inicioCount + 1
                     self.atual = j[2]
                     match = True
                     break

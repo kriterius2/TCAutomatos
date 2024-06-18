@@ -6,15 +6,14 @@ letra A (ab*c*)*
     transicoes = [
         ['q0','a','q1'],
         ['q1','a','q1'],
-        ['q1','b','q2'],
-        ['q2','a','q1'],
-        ['q2','b','q2'],
-        ['q2','c','q3'],
-        ['q3','a','q1']
+        ['q1','b','q1'],
+        ['q1','c','q2'],
+        ['q2','c','q2'],
+        ['q2','a','q1']
         ]
 
 inicial = 'q0'
-finais = ['q0','q1','q2','q3']        
+finais = ['q0','q1','q2']        
 
 letra B aaa(b|c)* |(b|c)*aaa
 
@@ -101,7 +100,7 @@ computador pessoal ou ainda computador doméstico.'
 
 
 '''
-estados = ['q0','q1','q2','q3','q4','q5','q6','q7','q8','q9','q10','q11']
+estados = ['q0','q1','q2','q3','q4','q5','q6','q7','q8','q9','q10','q11', 'q12']
 transicoes = [
     ['q0',' ','q1'],
     ['q1','c','q2'],
@@ -127,15 +126,16 @@ transicoes = [
     ['q11',' ','q12'],
     ['q11','.','q12'],
     ['q11',':','q12'],
-    ['q11',',','q12']
+    ['q11',',','q12'],
+    ['q12',' ','q1'],
+    ['q12','c','q2']
     ]
 inicial = 'q1'
 finais = ['q11']
 
 texto = "O computador é uma máquina capaz de variados tipos de tratamento automático de informações ou processamento de dados. Entende-se por computador um sistema físico que realiza algum tipo de computação. Assumiu-se que os computadores pessoais e laptops são ícones da era da informação. O primeiro computador eletromecânico foi construído por Konrad Zuse (1910–1995). Atualmente, um microcomputador é também chamado computador pessoal ou ainda computador doméstico." 
-#texto = 'o computador é uma maquina com computador '
 aut = Automato(estados,transicoes,inicial,finais)
 
 #aut.mostraAutomato()
 
-aut.questao2(texto)
+aut.ocorrencias(texto)
