@@ -11,21 +11,26 @@ Original file is located at
 # Mealy
 class Transducer:
     def __init__(self, states, transitions, initial):
-        self.states = states
-        self.transitions = transitions
-        self.initial = initial
+        self.states = states # Estados do Transdutor
+        self.transitions = transitions # Conjunto de transições/saída
+        self.initial = initial # Estado inicial
 
+    # Função de processamento de moedas
     def step(self, input):
-        current_state = self.initial
+        current_state = self.initial # Estado inicial
         print(f'Initial: {current_state}')
-        for coin in input:
-            match = False
+        for coin in input: # Para todo o conjunto de moedas
+            match = False # Flag de erro
+            # Verifica se existe a transição
             for transition in self.transitions:
                 if transition[0] == current_state and transition[2] == coin:
-                    print(transition[1], transition[3])
+                    print(f'Moeda: {coin}\tEstado: {transition[1]}'\
+                          f'\tOutput: {transition[3]}')
+                    # Transiciona para o próximo estado
                     current_state = transition[1]
                     match = True
                     break
+            # Erro caso a moeda inserida não esteja no escopo
             if not match:
                 print('Error')
                 return
